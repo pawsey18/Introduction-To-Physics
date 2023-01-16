@@ -4,6 +4,7 @@ let radius = 20;
 const color = "blue";
 const numBalls = 10;
 let g = 0.1; // acceleration by gravity
+let interval;
 
 // initial values
 let x = 50;
@@ -15,6 +16,12 @@ let vy = (Math.random() - 0.5) * 4;
 let balls = new Array();
 
 const init = () => {
+  canvas.addEventListener("mousedown", stopAnimation, false);
+  canvas.addEventListener("mouseup", startAnimation, false);
+  startAnimation();
+};
+
+const startAnimation = () => {
   for (let i = 0; i < numBalls; i++) {
     let ball = new Ball(radius, color);
     ball.x = 50;
@@ -23,9 +30,13 @@ const init = () => {
     ball.vy = (Math.random() - 0.5) * 4;
     ball.draw(ctx);
     balls.push(ball);
-    console.log("test");
+    //console.log("test");
   }
-  setInterval(forEachTimeStep, 1000 / 60); // 60 fps
+  interval = setInterval(forEachTimeStep, 1000 / 60); // 60 fps
+};
+
+const stopAnimation = () => {
+  clearInterval(interval);
 };
 
 const forEachTimeStep = () => {
