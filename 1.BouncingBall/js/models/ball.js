@@ -14,5 +14,6 @@ class Ball {
     ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, true);
     ctx.closePath();
     ctx.fill();
+    console.log("ball draw")
   }
 }
