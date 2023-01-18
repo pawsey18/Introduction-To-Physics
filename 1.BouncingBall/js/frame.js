@@ -8,7 +8,7 @@ const init = () => {
   ball = new Ball(20, "blue");
   ball.x = 50;
   ball.y = 50;
-  ball.vx = 100;
+  ball.vx = 200;
   ball.draw(ctx);
   t = new Date().getTime();
   animFrame();
